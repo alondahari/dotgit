@@ -20,7 +20,7 @@
     ff = merge --ff-only
     pullff = pull --ff-only
     noff = merge --no-ff
-    l = log --graph --abbrev-commit --date=relative --pretty=format:\"%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset\"
+    l = log --graph --abbrev-commit --date=relative --pretty=format:\"%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset\" --topo-order
     la = !git l --all
     fa = fetch --all
     pom = push origin master
