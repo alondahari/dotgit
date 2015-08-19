@@ -1,9 +1,9 @@
 
 
-**Why you made the change**
+Why you made the change:
 
 
 
-**How the change addresses the need**
+How the change addresses the need:
 
 
