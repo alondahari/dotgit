@@ -2,6 +2,9 @@
 # This file is a collection of bash functions that are helpers I have
 # written to aid with developing git hooks.
 
+# TODO: add documentation about this having to being run before cding to
+# anything
+
 # Get the path to the repository. This function returns it via stdout.
 # Hence, this method is intended to be called using command
 # substitution.
@@ -10,12 +13,18 @@ function get_repository_path {
   echo $(pwd -P)
 }
 
+# TODO: adjust this method to take in a repository path and get the name
+# of the repository
+
 # Get the repository name. This function returns it via stdout. Hence,
 # this method is intended to be called using command substitution.
 # ex: repo_name=$(get_repository_name)
 function get_repository_name {
   echo $(basename $(get_repository_path))
 }
+
+# TODO: adjust this method to take in a repository path and get the
+# context of the repository
 
 # Get the repository context. This function returns the context wrapping
 # the repository via stdout. Hence, this method is intended to be called
