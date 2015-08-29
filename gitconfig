@@ -28,6 +28,9 @@
     ds = diff --stat=160,120
     dh1 = diff HEAD~1
 
+[init]
+  templatedir = ~/.git/templates
+
 [commit]
   template = ~/.git/gitmessage.txt
 
