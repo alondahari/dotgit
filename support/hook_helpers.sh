@@ -2,36 +2,33 @@
 # This file is a collection of bash functions that are helpers I have
 # written to aid with developing git hooks.
 
-# TODO: add documentation about this having to being run before cding to
-# anything
-
 # Get the path to the repository. This function returns it via stdout.
 # Hence, this method is intended to be called using command
-# substitution.
+# substitution. Note: This command calls pwd so it is sensetive to
+# change of current working directory. Therefore, it should be called
+# prior to any commands which might change the current working
+# directory.
 # ex: repo_path=$(get_repository_path)
 function get_repository_path {
   echo $(pwd -P)
 }
 
-# TODO: adjust this method to take in a repository path and get the name
-# of the repository
-
-# Get the repository name. This function returns it via stdout. Hence,
-# this method is intended to be called using command substitution.
-# ex: repo_name=$(get_repository_name)
+# Get the repository name given a repository path. The repository name
+# is returned via stdout. Hence, this method is intended to be called
+# using command substitution.
+# ex: repo_name=$(get_repository_name "path/to/repository")
 function get_repository_name {
-  echo $(basename $(get_repository_path))
+  local repository_path=$1
+  echo $(basename "${repository_path}")
 }
 
-# TODO: adjust this method to take in a repository path and get the
-# context of the repository
-
-# Get the repository context. This function returns the context wrapping
-# the repository via stdout. Hence, this method is intended to be called
-# using command substitution.
-# ex: repo_context=$(get_repository_context)
+# Get the repository context given a repository path. This function
+# returns the context wrapping the repository via stdout. Therefore,
+# this method is intended to be called using command substitution.
+# ex: repo_context=$(get_repository_context "path/to/repository")
 function get_repository_context {
-  local repository_context_path=$(dirname $(get_repository_path))
+  local repository_path=$1
+  local repository_context_path=$(dirname "${repository_path}")
   echo $(basename ${repository_context_path}) 
 }
 
@@ -66,11 +63,11 @@ function get_issues_from_branch_name {
   echo "$(echo "$branch_name" | grep -Eo '\-?([0-9]+)\-?' | sed -n 's/-//gp')"
 }
 
-# Build jira issue link given an issue identifier. This method returns
-# the built jira issue link via stdout. Hence, it is intended to be
-# called using command substitution.
-# ex: jira_issue_link=$(build_jira_issue_link "WEB-23423")
-function build_jira_issue_link {
+# Build Acorns jira issue link given an issue identifier. This method
+# returns the built jira issue link via stdout. Hence, it is intended to
+# be called using command substitution.
+# ex: jira_issue_link=$(build_acorns_jira_issue_link "WEB-23423")
+function build_acorns_jira_issue_link {
   local jira_issue=$1
   echo "https://acorns.atlassian.net/browse/${jira_issue}"
 }
@@ -93,7 +90,7 @@ function insert_acorns_issue_links_into_commit_message {
 
   local jira_issue_links=''
   for jira_issue in $jira_issues; do 
-    local jira_issue_link=$(build_jira_issue_link $jira_issue)
+    local jira_issue_link=$(build_acorns_jira_issue_link $jira_issue)
     jira_issue_links="${jira_issue_links}"'\'$'\n'"Issue: ${jira_issue_link}"
   done
 

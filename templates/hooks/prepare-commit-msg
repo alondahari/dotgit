@@ -6,7 +6,8 @@
 # 1. Prevent users from commiting improper messages using -m
 # 2. Educate users on commit message best practices 
 # 3. Contextually prevent users from commiting to a branch without an
-#    issue reference (currently supports acorns context & my default)
+#    issue reference (currently supports acorns context & my default
+#    github)
 # 4. Inform users on git best practices for adding issue into branch
 #    name
 # 5. Extract issues from branch name and add them to commit message
@@ -32,6 +33,10 @@ function main {
   # commit message if -c, -C, or --ammend option was given
   local commit_sha1=$3
 
+  # Grab the repository path before any other commands possibly changed
+  # the current working directory.
+  local repository_path=$(get_repository_path)
+
   # Prevent user from using -m or -F because they should be providing
   # intent (why they made the change they did) not just what they did. It
   # is pretty much impossible to do that in the 50 char less summary.
@@ -52,7 +57,7 @@ function main {
   # convert it into a URL and append it to the commit message.
   local current_branch=$(get_current_branch)
   if [ "$current_branch" ]; then
-    local repository_context=$(get_repository_context)
+    local repository_context=$(get_repository_context "${repository_path}")
     if [ "$repository_context" == "acorns" ]; then
       local jira_issues=$(get_jira_issues_from_branch_name "$current_branch")
       if [ "$jira_issues" ]; then
