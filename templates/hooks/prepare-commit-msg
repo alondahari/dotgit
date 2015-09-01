@@ -40,17 +40,17 @@ function main {
   # Prevent user from using -m or -F because they should be providing
   # intent (why they made the change they did) not just what they did. It
   # is pretty much impossible to do that in the 50 char less summary.
-  if [ $commit_source -a $commit_source == 'message' ]; then
-    echo "What do you think you are doing?"
-    echo "Real devs don't use -m, they write valuable commit messages!"
-    echo
-    echo "References:"
-    echo " - http://chris.beams.io/posts/git-commit/"
-    echo " - http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html"
-    echo " - https://robots.thoughtbot.com/5-useful-tips-for-a-better-commit-message"
-    echo " - https://robots.thoughtbot.com/better-commit-messages-with-a-gitmessage-template"
-    exit 1
-  fi
+  # if [ $commit_source -a $commit_source == 'message' ]; then
+  #   echo "What do you think you are doing?"
+  #   echo "Real devs don't use -m, they write valuable commit messages!"
+  #   echo
+  #   echo "References:"
+  #   echo " - http://chris.beams.io/posts/git-commit/"
+  #   echo " - http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html"
+  #   echo " - https://robots.thoughtbot.com/5-useful-tips-for-a-better-commit-message"
+  #   echo " - https://robots.thoughtbot.com/better-commit-messages-with-a-gitmessage-template"
+  #   exit 1
+  # fi
 
   # Prevent users from committing if they haven't specified a JIRA issue
   # in their branch name. Also, extract the Jira issue identifier and
