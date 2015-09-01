@@ -91,10 +91,6 @@ function main {
         exit 1
       fi
     fi
-  else
-    echo "Err: Failed to get current branch!"
-    echo "This script is now broken, please correct it."
-    exit 1
   fi
 }
 
