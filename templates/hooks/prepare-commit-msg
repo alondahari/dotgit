@@ -14,6 +14,8 @@
 
 source ~/.git/support/hook_helpers.sh
 
+MASTER_BRANCH="master"
+
 function main {
   # The commit_msg_file contains the name of the file that contains the
   # commit log message.
@@ -57,38 +59,40 @@ function main {
   # convert it into a URL and append it to the commit message.
   local current_branch=$(get_current_branch)
   if [ "$current_branch" ]; then
-    local repository_context=$(get_repository_context "${repository_path}")
-    if [ "$repository_context" == "acorns" ]; then
-      local jira_issues=$(get_jira_issues_from_branch_name "$current_branch")
-      if [ "$jira_issues" ]; then
-        insert_acorns_issue_links_into_commit_message "$jira_issues" "$commit_msg_file"
+    if [ "$current_branch" != "$MASTER_BRANCH" ]; then
+      local repository_context=$(get_repository_context "${repository_path}")
+      if [ "$repository_context" == "acorns" ]; then
+        local jira_issues=$(get_jira_issues_from_branch_name "$current_branch")
+        if [ "$jira_issues" ]; then
+          insert_acorns_issue_links_into_commit_message "$jira_issues" "$commit_msg_file"
+        else
+          echo "tix please!"
+          echo
+          echo "Branch '${current_branch}' needs to include a JIRA issue."
+          echo "  ex: WEB-2342342_add_health_endpoint"
+          echo
+          echo "This can easily be done with something like..."
+          echo "$ git checkout -b <new-branch-with-tix>"
+          echo "$ git push origin :${current_branch}"
+          echo "$ git branch -D ${current_branch}"
+          exit 1
+        fi
       else
-        echo "tix please!"
-        echo
-        echo "Branch '${current_branch}' needs to include a JIRA issue."
-        echo "  ex: WEB-2342342_add_health_endpoint"
-        echo
-        echo "This can easily be done with something like..."
-        echo "$ git checkout -b <new-branch-with-tix>"
-        echo "$ git push origin :${current_branch}"
-        echo "$ git branch -D ${current_branch}"
-        exit 1
-      fi
-    else
-      local issues=$(get_issues_from_branch_name "$current_branch")
-      if [ "$issues" ]; then
-        insert_issues_into_commit_message "$issues" "$commit_msg_file"
-      else
-        echo "tix please!"
-        echo
-        echo "Branch '${current_branch}' needs to include an issue."
-        echo "  ex: add_health_endpoint-23422"
-        echo
-        echo "This can easily be done with something like..."
-        echo "$ git checkout -b <new-branch-with-tix>"
-        echo "$ git push origin :${current_branch}"
-        echo "$ git branch -D ${current_branch}"
-        exit 1
+        local issues=$(get_issues_from_branch_name "$current_branch")
+        if [ "$issues" ]; then
+          insert_issues_into_commit_message "$issues" "$commit_msg_file"
+        else
+          echo "tix please!"
+          echo
+          echo "Branch '${current_branch}' needs to include an issue."
+          echo "  ex: add_health_endpoint-23422"
+          echo
+          echo "This can easily be done with something like..."
+          echo "$ git checkout -b <new-branch-with-tix>"
+          echo "$ git push origin :${current_branch}"
+          echo "$ git branch -D ${current_branch}"
+          exit 1
+        fi
       fi
     fi
   fi
