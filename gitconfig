@@ -36,6 +36,7 @@
 
 [core]
     quotepath = false
+  ignorecase = false
 [difftool]
 	prompt = false
 [diff]
