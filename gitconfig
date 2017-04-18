@@ -10,7 +10,9 @@
     ci = commit -v
     co = checkout
     di = diff
+    wdi = diff --color-words
     dc = diff --cached
+    wdc = diff --color-words --cached
     amend = commit --amend
     aa = add --all
     head = !git l -1
@@ -27,7 +29,6 @@
     b = branch
     ds = diff --stat=160,120
     dh1 = diff HEAD~1
-    wdiff = diff --color-words
 
 [init]
   templatedir = ~/.git/templates
