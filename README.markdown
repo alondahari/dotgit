@@ -6,7 +6,7 @@ box I can simply clone the repo and be back to where I was.
 
 ## Installation:
 
-    git clone git://github.com/cyphactor/dotgit.git ~/.git
+    git clone git://github.com/drewdeponte/dotgit.git ~/.git
 
     ln -s ~/.git/gitconfig ~/.gitconfig
 
