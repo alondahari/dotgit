@@ -1,6 +1,7 @@
 [user]
-	name = Andrew De Ponte
+	name = Drew De Ponte
 	email = cyphactor@gmail.com
+	signingkey = 678AA67FA701CFA7D666BCE841C5D2C6E5AF944C
 
 [color]
     ui = auto
@@ -22,7 +23,7 @@
     ff = merge --ff-only
     pullff = pull --ff-only
     noff = merge --no-ff
-    l = log --graph --abbrev-commit --date=relative --pretty=format:\"%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset\" --topo-order
+    l = log --graph --abbrev-commit --date=relative --pretty=format:\"%C(yellow)%h%Creset - %G? -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset\" --topo-order
     la = !git l --all
     fa = fetch --all
     pom = push origin master
@@ -30,11 +31,10 @@
     ds = diff --stat=160,120
     dh1 = diff HEAD~1
 
-[init]
-  templatedir = ~/.git/templates
-
 [commit]
-  template = ~/.git/gitmessage.txt
+	gpgsign = true
+[tag]
+	gpgsign = true
 
 [core]
     quotepath = false
@@ -45,8 +45,10 @@
 	tool = Kaleidoscope
 [push]
     default = simple
+[pull]
+    rebase = true
 [mergetool]
-	keepBackup = true
+	keepBackup = false
 	prompt = false
 [difftool "Kaleidoscope"]
 	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
@@ -61,3 +63,7 @@
 	clean = git lfs clean %f
 	smudge = git lfs smudge %f
 	required = true
+[gpg]
+	program = /usr/local/bin/gpg
+[init]
+	defaultBranch = main
