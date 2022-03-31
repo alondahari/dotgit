@@ -1,8 +1,19 @@
+# Short summary of change (the what) ( <= 50 chars )
 
+# INTENSION of the change with context (Hard wrapped at 72 chars) 
 
-Why you made the change:
+# REASON for the change with context (Hard wrapped at 72 chars)
 
+# APPROACH taken to attempt to achieve the INTENSION or a portion
+# of the INTENSION. (Hard wrapped at 72 characters)
 
+# Associated Ticket Identifers
 
-How the change addresses the need:
-
+# Git Changelog header and entries if applicable
+# [changelog]
+# added: some addition you made that you want in your changelog
+# changed: some change you made that you want in your changelog
+# deprecated: some deprecation notice you want in your changelog
+# removed: some removal you want in your changelog
+# fixed: some fix you want in your changelog
+# security: some security fix you want in your changelog
