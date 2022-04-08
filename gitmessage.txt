@@ -1,12 +1,15 @@
 
 # Short summary of change (the what) ( <= 50 chars )
 
-# INTETION of the change with context (Hard wrapped at 72 chars) 
+# INTENTION of the change & REASON for change
+# (Hard wrapped at 72 chars) 
 
-# REASON for the change with context (Hard wrapped at 72 chars)
+# APPROACH taken & WHY in relation to attempting to achieve INTENTION
+# (Hard wrapped at 72 characters)
 
-# APPROACH taken to attempt to achieve the INTETION or a portion
-# of the INTETION. (Hard wrapped at 72 characters)
+# Deployment or Rollout Considerations
+
+# Automated Tests considerations - if **NOT** why?
 
 # Associated Ticket Identifers
 
