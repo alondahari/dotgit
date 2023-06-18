@@ -31,7 +31,7 @@
     dh1 = diff HEAD~1
 
 [commit]
-	template = "~/.git/gitmessage.txt"
+	template = "~/.config/git/gitmessage.txt"
 
 [core]
     quotepath = false
