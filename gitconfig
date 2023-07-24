@@ -34,11 +34,26 @@
 	template = "~/.config/git/gitmessage.txt"
 
 [core]
-    quotepath = false
+  quotepath = false
   ignorecase = false
+
 [push]
-    default = simple
+  default = simple
+
 [pull]
-    rebase = true
+  rebase = true
+
 [init]
 	defaultBranch = main
+
+[advice]
+  skippedCherryPicks = false
+
+[diff]
+  submodule = log
+
+[pull "submodule"]
+	recurse = true
+
+[credential]
+	helper = osxkeychain
