@@ -1,6 +1,9 @@
 [user]
 	name = Alon Dahari
 	email = climbinghobo@gmail.com
+  
+[includeIf "gitdir:~/code/github/"]
+  path = "./github-gitconfig"
 
 [color]
     ui = auto
