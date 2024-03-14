@@ -76,6 +76,9 @@
   colorMoved = default
   algorithm = histogram
 
+[status]
+  submoduleSummary = true
+
 [pull "submodule"]
 	recurse = true
 
