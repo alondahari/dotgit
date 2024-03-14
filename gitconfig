@@ -40,6 +40,9 @@
 [push]
   default = simple
 
+[merge]
+  conflictstyle = zdiff3
+
 [pull]
   rebase = true
 
