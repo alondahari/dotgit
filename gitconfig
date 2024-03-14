@@ -5,6 +5,18 @@
 [color]
     ui = auto
 
+[core]
+  pager = delta
+
+[interactive]
+    diffFilter = delta --color-only   # highlight code in git add -p
+
+[delta]
+  navigate = true    # use n and N to move between diff sections
+  light = false
+  line-numbers = true
+  side-by-side = true
+
 [alias]
     st = status
     ci = commit -v
@@ -59,6 +71,7 @@
 
 [diff]
   submodule = log
+  colorMoved = default
 
 [pull "submodule"]
 	recurse = true
