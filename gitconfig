@@ -72,6 +72,7 @@
 [diff]
   submodule = log
   colorMoved = default
+  algorithm = histogram
 
 [pull "submodule"]
 	recurse = true
