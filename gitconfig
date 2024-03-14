@@ -46,7 +46,6 @@
     dh1 = diff HEAD~1
 
 [commit]
-	template = "~/.config/git/gitmessage.txt"
   verbose = true
 
 [core]
