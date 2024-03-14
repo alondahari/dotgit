@@ -32,6 +32,7 @@
 
 [commit]
 	template = "~/.config/git/gitmessage.txt"
+  verbose = true
 
 [core]
   quotepath = false
