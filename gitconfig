@@ -75,6 +75,7 @@
   submodule = log
   colorMoved = default
   algorithm = histogram
+  tool = difftastic
 
 [status]
   submoduleSummary = true
